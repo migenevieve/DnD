@@ -1,2 +1,11 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<% if user_signed_in? %>
+  <p>Hello chill girl</p>
+<% end %>
+
+<%= link_to "Crée ton décor", new_decor_path %>
+<%= link_to "voir les décors", decors_path %>
+<%= link_to "Crée ton profil", new_profile_path %>
+<%= link_to "voir tous les profils", profiles_path %>

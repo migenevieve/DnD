@@ -1,0 +1,13 @@
+<h1>Voici tous les décors</h1>
+
+
+<ul>
+  <% @decors.each do |decor| %>
+    <li><%= link_to decor.title, decor_path(decor) %></li>
+    <% if decor.photos.attached? %>
+      <%= cl_image_tag decor.photos[0].key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+  <% end %>
+
+  <%= link_to 'Proposer un décor', new_decor_path  %>
+</ul>

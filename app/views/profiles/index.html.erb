@@ -1,0 +1,13 @@
+<h1>Voici tous les membres de DND!</h1>
+
+
+<ul>
+  <% @profiles.each do |profile| %>
+    <li><%= link_to profile.first_name, profile_path(profile) %></li>
+    <% if profile.avatar.attached? %>
+      <%= cl_image_tag profile.avatar.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+  <% end %>
+
+  <%= link_to 'Proposer un décor', new_decor_path  %>
+</ul>

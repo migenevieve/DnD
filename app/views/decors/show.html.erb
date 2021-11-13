@@ -1,0 +1,28 @@
+<h1><%= @decor.title %></h1>
+
+<% if @decor.photos.attached? %>
+  <%= cl_image_tag @decor.photos[0].key, height: 400, width: 400, crop: :fill %>
+<% end %>
+<% if @decor.photos.count > 1 %>
+  <% @decor.photos.drop(1).each do |photo| %>
+  <%= cl_image_tag photo.key, height: 400, width: 800, crop: :fill %>
+  <% end %>
+<% end %>
+
+
+<ul>
+    <li>Catégorie: <%= @decor.category %></li>
+    <li>Luminosité: <%= @decor.luminosity %>  lumineux</li>
+    <li>Extra: <%= @decor.extra %></li>
+    <li>Exposition: <%= @decor.decor_exposition %></li>
+    <li>Adresse: <%= @decor.address %></li>
+    <li>Dimension: <%= @decor.size %>m2</li>
+    <li>Capacité: <%= @decor.capacity %></li>
+    <li>Prix: <%= @decor.price %>/heure</li>
+
+  <%= link_to 'Revoir tous les décors', decors_path %>
+  <%= link_to 'Éditer ce décor', edit_decor_path(@decor) %>
+  <%= link_to "supprimer #{@decor.title}", decor_path(@decor), method: :delete, data: {confirm: "Are you sure?"} %>
+
+
+</ul>
